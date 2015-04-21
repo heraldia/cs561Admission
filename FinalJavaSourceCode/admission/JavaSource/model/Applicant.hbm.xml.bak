@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="model"> 
+
+	<class name="Applicant" table="applicant">
+	
+		<!-- <id name="id" column="ID">
+           <generator class="native"/>
+		</id> -->
+				
+		<id name = "applicantId" column="applicantId">
+			<generator class="native"/>
+		</id>
+		<!-- <property name="applicantId" column="applicantId" unique= "true" not-null="true"/> -->
+		<property name="nameLast" column="NAME_LAST" />
+		<property name="nameFirst" column="NAME_FIRST" />
+		<property name="nameMiddle" column="NAME_MIDDLE" />
+		<property name="email" column="EMAIL" />
+		<property name="permanentCountry" column="PERMANENT_COUNTRY" />
+		<property name="gender" column="GENDER" />
+		<property name="citizenCountry" column="CITIZEN_COUNTRY" />
+		<property name="greVerbalScore" column="GRE_VERBAL_SCORE" />
+		<property name="greQuantitativeScore" column="GRE_QUANTITATIVE_SCORE" />
+		<property name="greWritingScore" column="GRE_ANALYTICAL_WRITING_SCORE" />
+		<property name="toeflScore" column="TOEFL_SCORE" />
+		<property name="ieltsScore" column="IELTS_SCORE" />
+		<property name="degreeSought" column="DEGREE_SOUGHT_1" />
+		<property name="researchInterest" column="RESEARCH_INTEREST_1_1" />
+		<property name="statement" column="STATEMENT_1" />
+		<property name="referenceName1" column="REFERENCE_NAME_1" />
+		<property name="referenceName2" column="REFERENCE_NAME_2" />
+		<property name="referenceName3" column="REFERENCE_NAME_3" />
+		<property name="ethnic" column="ETHNC" />
+			
+		
+		
+		<set name="rating" cascade="all" >
+			<key column="applicantId"/>
+			<one-to-many class="model.CommitteeRating"/>
+		</set>
+		<!--
+		<set name="dutyAssign" cascade="all" >
+			<key column="applicantId"/>
+			<one-to-many class="model.DutyAssign"/>
+		</set>
+		-->
+		
+
+		
+		<set name="user" cascade="all" >
+			<key column="uid"/>
+			<one-to-many class="model.User"/>
+		</set>
+		
+
+   <!-- 
+    <one-to-one name="decision" class="model.Decision" cascade="all" lazy="false">
+    </one-to-one>
+    -->
+    
+    
+    
+       	
+ 	<many-to-one name="decision"
+   column="decisionID"
+   unique="true"
+   not-null="false">
+   </many-to-one>
+   
+   <many-to-one name="note"
+   column="noteID"
+   unique="true"
+   not-null="false">
+   </many-to-one>
+   
+   <many-to-one name="studentaccount"
+   column="studentID"
+   unique="true"
+   not-null="false">
+   </many-to-one>
+  
+   
+	</class>
+	
+</hibernate-mapping>

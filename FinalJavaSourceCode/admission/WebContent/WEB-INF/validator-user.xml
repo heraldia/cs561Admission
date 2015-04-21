@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1.3//EN"
+          "http://jakarta.apache.org/commons/dtds/validator_1_1_3.dtd">
+
+<form-validation> 
+<formset> 
+
+<!--
+<form name="registForm"> 
+ <field property="username" depends="required, integer"> 
+  <arg0 key="regist.username"/>
+ </field>
+ <field property="password" depends="required"> 
+  <arg0 key="regist.password"/> 
+ </field> 
+ <field property="repassword" depends="required,validwhen">
+  <arg key="regist.repassword" position="0"/>
+  <arg key="regist.password" position="1"/> 
+  <msg name="validwhen" key="error.password.match"/> 
+  <var> <var-name>test</var-name>
+        <var-value>(*this* == password)</var-value> 
+  </var>
+ </field> 
+ <field property="firstname" depends="required"> 
+  <arg0 key="regist.firstname"/> 
+ </field> 
+ <field property="email" depends="required"> 
+  <arg0 key="regist.email"/> 
+ </field> 
+ <field property="category" depends="required"> 
+  <arg0 key="regist.category"/> 
+ </field> 
+</form> 
+-->
+
+<form name="logonForm"> 
+ <field depends="required" property="username">
+  <arg0 key="logon.username"/> 
+ </field> 
+ <field depends="required" property="password"> 
+ <arg0 key="logon.password"/> </field> 
+</form>
+
+<form name="logonStudentForm"> 
+ <field depends="required" property="username">
+  <arg0 key="logonStudent.username"/> 
+ </field> 
+ <field depends="required" property="password"> 
+ <arg0 key="logonStudent.password"/> </field> 
+</form>
+
+<form name="messageForm"> 
+ <field depends="required" property="title">
+  <arg0 key="message.title"/> 
+ </field> 
+ <field depends="required" property="content"> 
+  <arg0 key="message.content"/> 
+ </field>
+</form>
+
+
+<form name="applicationForm"> 
+ <field depends="required" property="lastname">
+  <msg name="required" key="error.lastname.empty"/> 
+  </field> 
+</form>
+
+
+</formset> 
+</form-validation>

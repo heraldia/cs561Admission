@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+ <display-name>admission</display-name>
+ <!-- Action Servlet Configuration -->
+ <filter> <filter-name>hibernateFilter</filter-name> 
+ <filter-class>dao.HibernateFilter</filter-class> 
+ </filter> 
+ <filter-mapping> <filter-name>hibernateFilter</filter-name> 
+ <url-pattern>/*</url-pattern> 
+ </filter-mapping>
+ <servlet>
+  <servlet-name>action</servlet-name>
+  <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+  <init-param>
+   <param-name>config</param-name>
+   <param-value>/WEB-INF/struts-config.xml</param-value>
+  </init-param>
+  <load-on-startup>1</load-on-startup>
+ </servlet>
+ <!-- Action Servlet Mapping -->
+ <servlet-mapping>
+  <servlet-name>action</servlet-name>
+  <url-pattern>*.do</url-pattern>
+ </servlet-mapping>
+
+
+  <context-param>
+  	<param-name>page-size</param-name>
+  	<param-value>2</param-value>	
+  </context-param>	 
+	
+	<context-param>
+	  	<param-name>temp-folder</param-name>
+  		<param-value>F:\admissionupdated\WebContent\temp</param-value> 
+	</context-param>
+
+<!--
+	The parameters are related to reading of the XLS File 
+	except fot the first context param , others represent 
+	XLS column name and their type , whether optional or
+	manadatory
+ -->
+ 
+ 	<context-param>
+ 		<param-name>XLS_NO_OF_COLS</param-name>
+ 		<param-value>19</param-value>
+ 	</context-param>
+ 	<context-param>
+ 		<param-name>COL1</param-name>
+ 		<param-value>LAST NAME,STRING,MANDATORY</param-value>
+ 	</context-param>
+ 	<context-param>
+ 		<param-name>COL2</param-name>
+ 		<param-value>FIRST NAME,STRING,MANDATORY</param-value>
+ 	</context-param>
+ 	<context-param>
+ 		<param-name>COL3</param-name>
+ 		<param-value>MIDDLE NAME,STRING,OPTIONAL</param-value>
+ 	</context-param>
+ 	<context-param>
+ 		<param-name>COL4</param-name>
+ 		<param-value>EMAIL,STRING,MANDATORY</param-value>
+ 	</context-param>
+ 	<context-param>
+ 		<param-name>COL5</param-name>
+ 		<param-value>COUNTRY,STRING,OPTIONAL</param-value>
+ 	</context-param>
+ 	<context-param>
+ 		<param-name>COL6</param-name>
+ 		<param-value>CITIZENSHIP,STRING,OPTIONAL</param-value>
+ 	</context-param>
+ 	<context-param>
+ 		<param-name>COL7</param-name>
+ 		<param-value>ETHNICITY,STRING,OPTIONAL</param-value>
+ 	</context-param>
+ 	<context-param>
+ 		<param-name>COL8</param-name>
+ 		<param-value>GENDER,STRING,OPTIONAL</param-value>
+ 	</context-param>
+ 	<context-param>
+ 		<param-name>COL9</param-name>
+ 		<param-value>GRE VERBAL,NUMBER,OPTIONAL</param-value>
+ 	</context-param>
+ 	<context-param>
+ 		<param-name>COL10</param-name>
+ 		<param-value>GRE QUANT,NUMBER,OPTIONAL</param-value>
+ 	</context-param>
+ 	<context-param>
+ 		<param-name>COL11</param-name>
+ 		<param-value>GRE ANALYTICAL,NUMBER,OPTIONAL</param-value>
+ 	</context-param>
+ 	<context-param>
+ 		<param-name>COL12</param-name>
+ 		<param-value>TOEFL,NUMBER,OPTIONAL</param-value>
+ 	</context-param>
+ 	<context-param>
+ 		<param-name>COL13</param-name>
+ 		<param-value>IELTS,NUMBER,OPTIONAL</param-value>
+ 	</context-param>
+ 	<context-param>
+ 		<param-name>COL14</param-name>
+ 		<param-value>DEGREE SOUGHT,STRING,OPTIONAL</param-value>
+ 	</context-param>
+ 	<context-param>
+ 		<param-name>COL15</param-name>
+ 		<param-value>RESEARCH INTEREST,STRING,OPTIONAL</param-value>
+ 	</context-param>
+ 	<context-param>
+ 		<param-name>COL16</param-name>
+ 		<param-value>STATEMENT OF PURPOSE,STRING,OPTIONAL</param-value>
+ 	</context-param>
+ 	<context-param>
+ 		<param-name>COL17</param-name>
+ 		<param-value>REF1,STRING,OPTIONAL</param-value>
+ 	</context-param>
+ 	<context-param>
+ 		<param-name>COL18</param-name>
+ 		<param-value>REF2,STRING,OPTIONAL</param-value>
+ 	</context-param>
+ 	<context-param>
+ 		<param-name>COL19</param-name>
+ 		<param-value>REF3,STRING,OPTIONAL</param-value>
+ 	</context-param>
+
+ 	
+<jsp-config>
+  <taglib>
+   <taglib-uri>/WEB-INF/struts-bean</taglib-uri>
+   <taglib-location>/WEB-INF/struts-bean.tld</taglib-location>
+  </taglib>
+  <taglib>
+   <taglib-uri>/WEB-INF/struts-logic</taglib-uri>
+   <taglib-location>/WEB-INF/struts-logic.tld</taglib-location> 
+  </taglib>
+  <taglib>
+   <taglib-uri>/WEB-INF/struts-html</taglib-uri>
+   <taglib-location>/WEB-INF/struts-html.tld</taglib-location>
+  </taglib>
+ </jsp-config>
+ <!-- The Usual Welcome File List 
+
+-->
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+    
+  </welcome-file-list>
+</web-app>

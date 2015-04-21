@@ -1,0 +1,11 @@
+INSERT INTO `user` (`uid`, `username`, `password`, `email`, `firstname`, `category`) VALUES ('1', 'pavan', 'abc123', 'pavan@iastate.edu', 'Pavan', '0');
+INSERT INTO `user` (`uid`, `username`, `password`, `email`, `firstname`, `category`) VALUES ('2', 'jil', 'abc123', 'jil@iastate.edu', 'Jim', '0');
+INSERT INTO `user` (`uid`, `username`, `password`, `email`, `firstname`, `category`) VALUES ('3', 'chaudhur', 'abc123', 'chaudhur@iastate.edu', 'Soma', '0');
+INSERT INTO `user` (`uid`, `username`, `password`, `email`, `firstname`, `category`) VALUES ('4', 'tavanapo', 'abc123', 'tavanapo@iastate.edu', 'Wallapak', '0');
+INSERT INTO `user` (`uid`, `username`, `password`, `email`, `firstname`, `category`) VALUES ('5', 'gsong', 'abc123', 'gsong@iastate.edu', 'Guang', '0');
+INSERT INTO `user` (`uid`, `username`, `password`, `email`, `firstname`, `category`) VALUES ('6', 'jtian', 'abc123', 'jtian@iastate.edu', 'Jin', '0');
+INSERT INTO `user` (`uid`, `username`, `password`, `email`, `firstname`, `category`) VALUES ('7', 'wzhang', 'abc123', 'wzhang@iastate.edu', 'Wensheng', '0');
+INSERT INTO `user` (`uid`, `username`, `password`, `email`, `firstname`, `category`) VALUES ('8', 'yingcai', 'abc123', 'yingcai@iastate.edu', 'Ying', '1');
+INSERT INTO `user` (`uid`, `username`, `password`, `email`, `firstname`, `category`) VALUES ('9', 'wong', 'abc123', 'wong@iastate.edu', 'Johnny', '2');
+INSERT INTO `user` (`uid`, `username`, `password`, `email`, `firstname`, `category`) VALUES ('10', 'laurelt', 'abc123', 'laurelt@iastate.edu', 'Laurel', '3');
+INSERT INTO `user` (`uid`, `username`, `password`, `email`, `firstname`, `category`) VALUES ('11', 'abigail2', 'abc123', 'abigail2@iastate.edu', 'Abigail', '3');

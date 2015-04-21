@@ -1,0 +1,82 @@
+package strutsaction;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts.action.Action;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+import org.apache.struts.actions.DispatchAction;
+
+
+import dao.ApplicantDAO;
+import dao.CommitteeProgressDAO;
+import model.CommitteeProgress;
+import model.DutyAssign;
+
+public class CommitteeProgressAction extends DispatchAction {
+
+	public ActionForward getCP( ActionMapping mapping, ActionForm form, 
+							  HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		
+		
+		CommitteeProgressDAO dao = new CommitteeProgressDAO();
+		List msTotal = dao.getCommitteeProgressMSTotal();
+		List phdTotal = dao.getCommitteeProgressPHDTotal();
+		
+		List msDone = dao.getCommitteeProgressMSDone();
+		List phdDone = dao.getCommitteeProgressPHDDone();
+		
+		List committeeUsernames = dao.getCommitteeMemberName();
+		
+		int totalNoOfReviews = 0;
+		int totalNoOfReviewsDone = 0;
+		
+	
+	
+		ArrayList<CommitteeProgress> committeeProgressAL = new ArrayList<CommitteeProgress>();
+		CommitteeProgress committeeProgress;
+	
+		for(int i = 0 , j = 0 , k = 0 ; i < committeeUsernames.size() ; i++){
+			committeeProgress = new CommitteeProgress();
+			committeeProgress.setCommitteeMemberName(committeeUsernames.get(i).toString());
+			committeeProgress.setTotalNoOfMastersStudentsAllotted(Integer.parseInt(((Object[])msTotal.get(i))[1].toString()));
+			committeeProgress.setTotalNoOfPHDStudentsAllotted(Integer.parseInt(((Object[])phdTotal.get(i))[1].toString()));
+			if(j < msDone.size() && ((Object[])msDone.get(j))[0].toString().equalsIgnoreCase(committeeProgress.getCommitteeMemberName())){
+				committeeProgress.setTotalNoOfMastersStudentCompleted(Integer.parseInt(((Object[])msDone.get(j++))[1].toString()));
+			}
+			if(k < phdDone.size() && ((Object[])phdDone.get(k))[0].toString().equalsIgnoreCase(committeeProgress.getCommitteeMemberName())){
+				committeeProgress.setTotalNoOfPHDStudentCompleted(Integer.parseInt(((Object[])phdDone.get(k++))[1].toString()));
+			}
+			committeeProgressAL.add(committeeProgress);
+		}
+		
+		for(int i = 0 ; i < committeeProgressAL.size() ; i++){
+			
+			totalNoOfReviews += committeeProgressAL.get(i).getTotalNoOfMastersStudentsAllotted() + committeeProgressAL.get(i).getTotalNoOfPHDStudentsAllotted();
+			totalNoOfReviewsDone += committeeProgressAL.get(i).getTotalNoOfMastersStudentCompleted() + committeeProgressAL.get(i).getTotalNoOfPHDStudentCompleted();
+		}
+		
+		
+		request.setAttribute("totalNoOfReviews", totalNoOfReviews);
+		request.setAttribute("totalNoOfReviewsDone", totalNoOfReviewsDone);
+		request.setAttribute("CommitteeReveiws", committeeProgressAL);
+		
+		
+		
+		
+		//request.setAttribute("committeeProgress", committeeProgresses);
+		return mapping.findForward("success");
+		
+		}
+	
+		
+}
+
+

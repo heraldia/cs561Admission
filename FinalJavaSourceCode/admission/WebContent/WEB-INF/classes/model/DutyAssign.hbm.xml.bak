@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="model"> 
+
+	<class name="DutyAssign" table="dutyAssign">
+	
+		<id name="id" column="ID">
+           <generator class="native"/>
+		</id>
+		
+		
+		<property name="applicantId" column="applicantId"/> 
+		<property name="committee" column="committee" /> 
+		
+	
+		<property name="done" column="done" />
+
+		<property name="date" column="date" />
+
+		
+   
+   
+	</class>
+	
+</hibernate-mapping>

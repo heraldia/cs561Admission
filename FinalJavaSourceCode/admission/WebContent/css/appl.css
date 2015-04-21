@@ -1,0 +1,215 @@
+body {
+	font-family: Arial, Sans-Serif;
+}
+
+#container {
+	width: 500px;
+	margin: 0 auto;
+	text-align: left;
+}
+
+/* Nicely lines up the labels. */
+form label {
+	display: inline-block;
+	width: 300px;
+}
+
+/* You could add a class to all the input boxes instead, if you like. That would be safer, and more backwards-compatible */
+form input[type="text"],form input[type="email"] {
+	width: 250px;
+}
+
+form .line {
+	clear: both;
+	
+}
+
+form .line.submit {
+	text-align: right;
+}
+
+
+/*
+CSS ADDED BY KAREN WANG START
+*/
+
+
+table#importXLSTable{
+	margin:auto;
+	padding : 150px 0px 200px 0px;
+}
+
+table#importXLSTable input#importXLFFilename{
+
+	border: 1px solid black;
+	width:400px;
+}
+
+div#AplicationFormErrorMessageDiv{
+	padding-left : 45%;
+	margin-bottom:50px;
+}
+
+table#applicationFormTable th{
+	text-align: left;
+}
+span.mandatory{
+	color : red;
+}
+table#applicationFormTable th#applicationFormHeader{
+	text-align: center!important;
+	font-size: 20px;
+	padding:  0px 0px 20px 0px;
+
+}
+
+table#applicationFormTable{
+	margin:auto;
+}
+
+td#mandatoryFieldNotification{
+	
+	text-align : center;
+	color : red;
+	font-weight: bold;
+}
+
+div#exportXLSDiv{
+	margin-top:150px;
+	margin-right: 20px;
+	text-align: center;
+	width: 200px;
+	height: 100px;
+	vertical-align: middle;
+	float: right;
+	
+	
+}
+div#importExportMsgs{
+	
+	margin:auto;
+}
+div#importExportMsgs div#duplicateEntries{
+	margin-top:50px;
+	margin-bottom:50px;
+}
+
+table.committeeProgressTable{
+	margin : auto;
+	border : 3px groove black;
+	margin-top : 100px;
+	margin-bottom : 100px;
+	width:400px;
+}
+
+table.committeeProgressTable tr td , table.committeeProgressTable tr th {
+	margin : auto;
+	padding: 2px 5px 2px 5px;
+	border : 1px dotted black;
+
+}
+
+ table.committeeProgressTable tr th {
+ 
+	margin : auto;
+	padding: 2px 5px 2px 5px;
+	border : 1px dotted black;
+}
+
+table#report{
+	margin : auto;
+	margin-top : 100px;
+	margin-bottom : 100px;
+	border : 3px groove black;
+}
+
+table#report tr td{
+	padding : 0px 5px 0px 5px;
+}
+table#report  tr th.header-left{
+	
+	text-align : left;	
+	padding-top : 10px;
+	padding-bottom : 10px;
+}
+
+table#report  tr td a{
+	
+	text-decoration: none;
+	text-align: right;
+}
+
+table#report  tr td , table#report  tr th{
+	border : 1px dotted black;
+}
+
+
+div.blackOut{
+	position: absolute;
+	top : 0px;
+	left : 0px;
+	width : 100%;
+	height:100%;
+	background-color: black;
+	opacity : .7;
+	filter:Alpha(opacity=50);
+	z-index : 101;
+}
+
+div.popup{
+	
+	position : absolute;
+	margin : auto;
+	max-height : 400px;
+	width : 500px;
+	top : 30%;
+	left: 40%;
+	background-color : white;
+	z-index : 102; 
+	overflow-x : scroll;
+	overflow-y: scroll;
+}
+
+div.popUpContent table tr th{
+	
+	padding: 0px 10px 0px 10px;
+	background-color: lightgray;
+}
+
+div.popUpContent table tr td{
+	
+	padding: 0px 10px 0px 10px;
+}
+
+div.popUpContent h2.tableHeader{
+	text-align:  center;
+}
+
+div.popUpContent table tr:nth-child(even){
+	background-color: lightblue;
+}
+h4.closeme{
+	
+	color : red;
+	cursor : pointer;
+	font-size: 18;
+	position : absolute;
+	top:-15px;
+
+}
+table#submissionConfirmationTable{
+	padding-top 		 : 100px;
+	padding-bottom	 : 100px;
+	margin 			 : auto;
+}
+table#submissionConfirmationTable tr th{
+	
+	text-align: left;
+}
+table#submissionConfirmationTable tr {
+	
+	padding-top : 10px 0px 10px 0px;
+}
+/*
+CSS ADDED BY KAREN WANG END
+*/

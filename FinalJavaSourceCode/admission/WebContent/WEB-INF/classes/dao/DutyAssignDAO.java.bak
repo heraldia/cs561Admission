@@ -1,0 +1,151 @@
+package dao;
+
+import exception.DAOException;
+import model.DutyAssign;
+import model.User;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import paginate.PageModel;
+
+public class DutyAssignDAO extends HibernateDAO {
+
+
+	public void saveDutyAssign(DutyAssign dutyAssign)
+	{
+		super.saveObject(dutyAssign);
+	}
+
+	/**ps
+	 * @param dutyAssign
+	 */
+	/*
+	public void saveDutyAssign(DutyAssign dutyAssign)
+	{
+		if (dutyAssign == null)
+			return;
+
+		DutyAssign dutyAssign2 = getDutyAssign(String.valueOf(dutyAssign.getDutyAssignId()));
+		if (dutyAssign2 != null)
+			throw new DAOException("Duplicated dutyAssigns");
+
+		super.saveObject(dutyAssign);
+	}
+*/
+	public List getDutyAssigns()
+	{
+		String hsql = "from DutyAssign";
+		return super.getObjects(hsql);
+	}
+
+/*
+	public void deleteDutyAssign(String id, String userId)
+	{
+		User user = (User)getObject( User.class, userId );
+		if( user==null ) {
+			throw new DAOException( "Couldn't user!" );
+		}
+		
+		DutyAssign m = null;
+		
+		Iterator it = user.getDutyAssign().iterator();
+		while( it.hasNext() ) {
+			DutyAssign dutyAssign = (DutyAssign)it.next();
+			if( dutyAssign.getId().equals( id ) ) {
+				m = dutyAssign;
+			}
+		}
+		if( m!=null ) {
+			deleteObject( m );
+			user.getDutyAssigns().remove( m );
+		}
+	}
+*/
+
+	public DutyAssign getDutyAssign(Long id)
+	{
+		return (DutyAssign) getObject(DutyAssign.class, id);
+	}
+
+
+	public void updateDutyAssign(DutyAssign dutyAssign)
+	{
+		updateObject(dutyAssign);
+	}
+
+/*
+	public void deleteReplyDutyAssign(String id, String userId) {
+		ReplyDutyAssign reply = (ReplyDutyAssign)getObject( ReplyDutyAssign.class, id );
+		if( reply==null ) {
+			throw new DAOException("reply==null");
+		}
+		
+		DutyAssign dutyAssign = reply.getDutyAssign();
+		Iterator it = dutyAssign.getReplies().iterator();
+		while( it.hasNext() ) {
+			ReplyDutyAssign r = (ReplyDutyAssign)it.next();
+			if( r.getId().equals( id ) ) {
+				dutyAssign.getReplies().remove( r );
+			}
+		}
+	}
+*/
+  /* public PageModel findAllDutyAssign(String queryString, int pageNo, int pageSize){
+		List dutyAssignList = new ArrayList();
+		if (queryString != null && !"".equals(queryString)) {
+			dutyAssignList = getHibernateTemplate().executeFind(new HibernateCallback(){
+
+				public Object doInHibernate(Session session)
+						throws HibernateException, SQLException {
+					return session.createQuery("from DutyAssign i where i.dutyAssignNo like ? or i.dutyAssignName like ? order by i.dutyAssignNo")
+								.setParameter(0, "%" + queryString + "%")
+								.setParameter(1, "%" + queryString + "%")
+								.setFirstResult((pageNo-1) * pageSize)
+								.setMaxResults(pageSize)
+								.list();
+				}
+			});
+			
+		}else {
+			dutyAssignList = getHibernateTemplate().executeFind(new HibernateCallback(){
+
+				public Object doInHibernate(Session session)
+						throws HibernateException, SQLException {
+					return session.createQuery("from DutyAssign i join fetch i.dutyAssignCategory join fetch i.dutyAssignUnit order by i.dutyAssignNo")
+								.setFirstResult((pageNo-1) * pageSize)
+								.setMaxResults(pageSize)
+								.list();
+				}
+			});
+		}
+		PageModel pageModel = new PageModel();
+		pageModel.setPageNo(pageNo);
+		pageModel.setPageSize(pageSize);
+		pageModel.setList(dutyAssignList);
+		pageModel.setTotalRecords(getTotalRecords(queryString));
+		return pageModel;
+	}*/
+   
+	/**
+	 * return the number of records
+	 * @param conn
+	 * @param queryStr
+	 * @return
+	 */
+	/*public int getTotalRecords(String queryString){
+
+		int count = 0;
+		if (queryString != null && !"".equals(queryString)) {
+			count = ((Long)getSession().createQuery("select count(*) from Item i where i.itemNo like ? or i.itemName like ?")
+							.setParameter(0,  "%" + queryString + "%")
+							.setParameter(1,  "%" + queryString + "%")
+							.uniqueResult()).intValue();
+		}else {
+			count = ((Long)getSession().createQuery("select count(*) from Item i")
+					.uniqueResult()).intValue();
+		}
+		return count;
+	}*/
+}

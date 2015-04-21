@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="StrutsProcess">
+ <PROCESS-ITEM ID="#regist" NAME="action0" PATH="/regist"
+  SHAPE="32,17,0,0" TITLE="registForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="exception.admissionDAOException" NAME="exception0"
+   PATH="/regist.jsp" TARGET="page0" TITLE="admissionDAOException"
+   TYPE="exception" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page0" PATH="/regist.jsp" SHAPE="240,34,0,0"
+  SUBTYPE="jsp" TITLE="regist.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/regist.do"
+   SUBTYPE="confirmed" TARGET="action0" TITLE="/regist.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="homepage" NAME="forward0" PATH="/homepage.do"
+  SHAPE="32,129,0,0" TARGET="action3" TITLE="homepage" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page1" PATH="/homepage.jsp" SHAPE="240,241,0,0"
+  SUBTYPE="jsp" TITLE="homepage.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/messageAdd.do"
+   SUBTYPE="confirmed" TARGET="action4" TITLE="/messageAdd.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/replyDelete.do"
+   SUBTYPE="confirmed" TARGET="action5" TITLE="/replyDelete.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/messageDelete.do"
+   SUBTYPE="confirmed" TARGET="action6" TITLE="/messageDelete.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link3" PATH="/messageUpdate.do"
+   SUBTYPE="confirmed" TARGET="action7" TITLE="/messageUpdate.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#regist" NAME="action1" PATH="/regist"
+  SHAPE="32,241,0,0" SUBTYPE="forward" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="action1" PATH="/regist.jsp" TARGET="page0"
+   TITLE="forward" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#logon" NAME="action2" PATH="/logon"
+  SHAPE="32,353,0,0" TITLE="logonForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#homepage" NAME="action3" PATH="/homepage"
+  SHAPE="32,465,0,0" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="homepage" NAME="forward0"
+   PATH="/homepage.jsp" TARGET="page1" TITLE="homepage" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="logon" NAME="forward1" PATH="/index.jsp"
+   TARGET="page6" TITLE="logon" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#messageAdd" NAME="action4" PATH="/messageAdd"
+  SHAPE="448,241,0,0" SUBTYPE="forward" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="action4" PATH="/message_add.jsp"
+   TARGET="page2" TITLE="forward" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#replyDelete" NAME="action5" PATH="/replyDelete"
+  SHAPE="448,353,0,0" TITLE="idForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#messageDelete" NAME="action6" PATH="/messageDelete"
+  SHAPE="656,241,0,0" TITLE="idForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#messageUpdate" NAME="action7" PATH="/messageUpdate"
+  SHAPE="448,465,0,0" TITLE="idForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="messageupdate" NAME="forward0"
+   PATH="/message_update.jsp" TARGET="page3" TITLE="messageupdate"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page2" PATH="/message_add.jsp" SHAPE="656,353,0,0"
+  SUBTYPE="jsp" TITLE="message_add.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/messageSave.do"
+   SUBTYPE="confirmed" TARGET="action8" TITLE="/messageSave.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#messageSave" NAME="action8" PATH="/messageSave"
+  SHAPE="864,353,0,0" TITLE="messageForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page3" PATH="/message_update.jsp"
+  SHAPE="656,577,0,0" SUBTYPE="jsp" TITLE="message_update.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/messageSaveUpdate.do"
+   SUBTYPE="confirmed" TARGET="action9" TITLE="/messageSaveUpdate.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#messageSaveUpdate" NAME="action9"
+  PATH="/messageSaveUpdate" SHAPE="32,785,0,0" TITLE="messageForm"
+  TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#admission" NAME="action10" PATH="/admission"
+  SHAPE="32,1009,0,0" TITLE="admissionForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="admission" NAME="forward0" PATH="/admission.jsp"
+   TARGET="page4" TITLE="admission" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page4" PATH="/admission.jsp" SHAPE="240,1026,0,0"
+  SUBTYPE="jsp" TITLE="admission.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/replyAdd.do"
+   SUBTYPE="confirmed" TARGET="action11" TITLE="/replyAdd.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#replyAdd" NAME="action11" PATH="/replyAdd"
+  SHAPE="448,1026,0,0" TITLE="idForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="reply" NAME="forward0" PATH="/reply.jsp"
+   TARGET="page5" TITLE="reply" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page5" PATH="/reply.jsp" SHAPE="656,1026,0,0"
+  SUBTYPE="jsp" TITLE="reply.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/replySave.do"
+   SUBTYPE="confirmed" TARGET="action12" TITLE="/replySave.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#replySave" NAME="action12" PATH="/replySave"
+  SHAPE="32,1233,0,0" TITLE="replyForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="admission" NAME="forward0" PATH="/admission.do"
+   TARGET="action10" TITLE="admission" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page6" PATH="/index.jsp" SHAPE="240,465,0,0"
+  SUBTYPE="jsp" TITLE="logon.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/logon.do" SUBTYPE="confirmed"
+   TARGET="action2" TITLE="/logon.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+</PROCESS>

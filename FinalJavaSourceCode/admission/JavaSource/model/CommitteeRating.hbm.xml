@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="model"> 
+
+	<class name="CommitteeRating" table="committeeRatings">
+	
+		<id name="id" column="ID" >
+           <generator class="native"/>
+		</id>
+		
+		<property name="applicantId" column="applicantId" />
+		<property name="totalScore" column="totalScore" />
+		
+		<property name="comments" column="comments" />
+
+		<property name="ta" column="ta" />
+
+		<property name="fellowship" column="fellowship" />
+		<property name="committeeId" column="committeeId" />
+		<property name="done" column="done" />
+		<property name="date" column="date" />
+
+
+	</class>
+	
+</hibernate-mapping>

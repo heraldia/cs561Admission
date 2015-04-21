@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="model">
+
+	<class name="Decision" table="decision">
+
+		<id name="id" column="decisionID">
+			 <generator class="native"/>
+		</id>
+
+	
+
+		<property name="admit" column="admit" />
+
+		<property name="date" column="date" />
+
+	</class>
+
+</hibernate-mapping>
+	

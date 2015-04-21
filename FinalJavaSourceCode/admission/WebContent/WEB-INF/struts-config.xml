@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+                               "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	<form-beans>
+		<form-bean name="registForm" type="actionform.RegistForm" />
+		<form-bean name="addNoteForm" type="actionform.AddNoteForm" />
+		<form-bean name="addDecisionForm" type="actionform.AddDecisionForm" />
+		<form-bean name="logonForm" type="actionform.LogonForm" />
+		<form-bean name="messageForm" type="actionform.MessageForm" />
+		<form-bean name="idForm" type="actionform.IdForm" />
+		<form-bean name="blogForm" type="actionform.BlogForm" />
+		<form-bean name="replyForm" type="actionform.ReplyForm" />
+		<form-bean name="resetPasswordForm" type="actionform.ResetPasswordForm"/>
+		<form-bean name="studentRegisterForm" type="actionform.StudentRegisterForm" />
+		<form-bean name="logonStudentForm" type="actionform.LogonStudentForm" />
+		<form-bean name="applicationForm" type="actionform.ApplicationForm" />
+		<form-bean name="studentResetPasswordForm" type="actionform.StudentResetPasswordForm"/>
+		<form-bean name="importApplicantXLS" type="actionform.ImportApplicantXLSForm" />
+		
+		<!--  ADDED BY PRIYANGIKA START -->
+        <form-bean name="cmevalAppForm" type="actionform.CMEvalApplicantForm"/>
+        
+        <!--  ADDED BY PRIYANGIKA END -->
+  
+	</form-beans>
+	<global-exceptions />
+
+	<global-forwards>
+		<forward name="homepage" path="/homepage.do" />
+		<forward name="index" path="/index.jsp" />
+		<forward name="OnlineApplicationLogin" path="/OnlineApplicationLogin.jsp" />
+		<forward name="test" path="/WEB-INF/jsp/test.jsp" />
+	</global-forwards>
+
+	<action-mappings>
+		<action attribute="registForm" input="/WEB-INF/jsp/regist.jsp"
+			name="registForm" path="/regist" scope="request" type="strutsaction.RegistAction">
+			<exception key="error.user.duplicate" path="/WEB-INF/jsp/regist.jsp"
+				type="exception.DAOException" />
+		</action>
+
+		<action forward="/WEB-INF/jsp/regist.jsp" input="/index.jsp"
+			path="/registInput">
+		</action>
+		
+		<action attribute="logonForm" input="/index.jsp" name="logonForm"
+			path="/logon" scope="request" type="strutsaction.LogonAction">
+			<forward name="login_success" path="/WEB-INF/jsp/login_success.jsp" />
+		</action>
+
+		<action path="/homepage" type="strutsaction.HomepageAction"
+			validate="false">
+			<forward name="homepage" path="/WEB-INF/jsp/homepage.jsp" />
+			<forward name="logon" path="/index.jsp" />
+		</action>
+
+		<action path="/homepage" type="strutsaction.HomepageAction"
+			validate="false">
+			<forward name="homepage" path="/WEB-INF/jsp/homepage.jsp" />
+			<forward name="logonStudent" path="/WEB-INF/jsp/test.jsp" />
+		</action>
+
+		<!--  ADDED BY KIM NI WANG START -->
+		
+		<action attribute="studentRegisterForm" input="/WEB-INF/jsp/studentRegister.jsp"
+			name="studentRegisterForm" path="/studentRegister" scope="request" type="strutsaction.StudentRegisterAction">
+			<exception key="error.user.duplicate" path="/WEB-INF/jsp/studentRegister.jsp"
+				type="exception.DAOException" />
+				<forward name="studentlogin" path="/OnlineApplicationLogin.jsp" />
+		</action>
+		
+		<action forward="/WEB-INF/jsp/studentRegister.jsp" input="/OnlineApplicationLogin.jsp"
+			path="/register">
+		</action>
+		
+		<action forward="/WEB-INF/jsp/studentLogout.jsp" input="/OnlineApplicationLogin.jsp"
+			path="/studentLogout" >
+			<forward name="studentlogin" path="/OnlineApplicationLogin.jsp" />
+		</action>
+		
+		<action path="/studentResetPassword" type="strutsaction.StudentResetPasswordAction"
+			name="studentResetPasswordForm" input="/WEB-INF/jsp/studentResetPassword.jsp"
+			validate="true" scope="request">
+			<forward name="login_success" path="/OnlineApplicationLogin.jsp" />
+			<forward name="studentlogin" path="/OnlineApplicationLogin.jsp" />
+
+		</action>
+		<action forward="/WEB-INF/jsp/studentResetPassword.jsp" input="/WEB-INF/jsp/studentResetPassword.jsp"
+			path="/studentReset" />
+		
+		<action attribute="logonStudentForm" input="/OnlineApplicationLogin.jsp" name="logonStudentForm"
+			path="/logonStudent" scope="request" type="strutsaction.LogonStudentAction">
+			<forward name="login_success" path="/WEB-INF/jsp/applicationForm.jsp" />
+		</action>
+				
+		 <action input="/WEB-INF/jsp/applicationForm.jsp" name="applicationForm" path="/applicationForm" 
+			type="strutsaction.ApplicationFormAction" scope="session"  validate="true">
+			<forward name="valueEnteredSuccessfully" path="/WEB-INF/jsp/applicationSubmitted.jsp" />
+			<forward name="logonStudent" path="/WEB-INF/jsp/applicationForm.jsp" />
+		</action>
+
+ 		
+ 		<action path="/progress" type="strutsaction.CommitteeProgressAction" 
+	 		parameter="method">
+			<forward name="success" path="/WEB-INF/jsp/committeeProgress.jsp" />
+		</action> 
+		
+ 		<action path="/importExport" type="strutsaction.ImportExportAction" 
+	 		parameter="method">
+			<forward name="displayForm" path="/WEB-INF/jsp/importExport.jsp" />
+		</action> 		
+		
+ 		 <action path="/report" type="strutsaction.ReportAction" 
+	 		parameter="method">
+			<forward name="success" path="/WEB-INF/jsp/report.jsp" />
+		</action> 	
+		
+		<action path="/exportRates" type="strutsaction.ImportExportAction" 
+	 		parameter="method">
+			<forward name="exportedSuccessful"  path="/WEB-INF/jsp/importExport.jsp" />
+			<forward name="exportFailure" 		path="/WEB-INF/jsp/importExport.jsp" />
+		</action> 
+		
+		<action input="/WEB-INF/jsp/importExport.jsp" path="/submitApplicantXLS" type="strutsaction.ImportApplicantXLSAction" 
+		scope="request" name="importApplicantXLS" validate="true">
+			<forward name="uploadedSuccessfully" path="/WEB-INF/jsp/importExport.jsp" />
+			<forward name="notUploaded" path="/WEB-INF/jsp/importExport.jsp" />
+		</action> 	 
+ 		
+ 		<!--  ADDED BY KIM NI WANG END -->
+ 		
+		<action path="/userlist" type="strutsaction.UserListAction">
+			<forward name="userlist" path="/WEB-INF/jsp/userlist.jsp" />
+		</action>
+		
+		 <action path="/ApplicationPage" type="org.apache.struts.actions.ForwardAction" parameter="/WEB-INF/jsp/applicationForm.jsp"/>
+		
+		<action path="/listAllApplicantsP" type="strutsaction.ListAllApplicantsDispAction"
+			parameter="method">
+			<forward name="listAllApplicants" path="/WEB-INF/jsp/listAllApplicants.jsp" />
+		</action>
+
+		<action path="/listMails" type="strutsaction.ListAllApplicantsDispAction"
+			parameter="method">
+			<forward name="listAllApplicants" path="/WEB-INF/jsp/listMails.jsp" />
+		</action>
+
+		<action path="/listNotes" type="strutsaction.ListAllApplicantsDispAction"
+			parameter="method">
+			<forward name="listAllApplicants" path="/WEB-INF/jsp/listNotes.jsp" />
+		</action>
+		
+
+        <action path="/listDecisions" type="strutsaction.ListAllApplicantsDispAction" 
+            parameter="method">
+			<forward name="listAllApplicants" path="/WEB-INF/jsp/listDecisions.jsp" />
+		</action>
+		
+		<action path="/listAllApplicants" type="strutsaction.ListAllApplicantsAction">
+			<forward name="listAllApplicants" path="/WEB-INF/jsp/listAllApplicants.jsp" />
+		</action>
+
+		<!-- error all is listAllApplicants.jsp -->
+		<action path="/mapping/listAllApplicants" type="strutsaction.ListAllApplicantsAction"
+			parameter="all">
+			<forward name="listAllApplicants" path="/WEB-INF/jsp/listAllApplicants.jsp" />
+		</action>
+		<action path="/mapping/listMsApplicants" type="strutsaction.ListAllApplicantsAction"
+			parameter="ms">
+			<forward name="listAllApplicants" path="/WEB-INF/jsp/listAllApplicants.jsp" />
+		</action>
+		<action path="/mapping/listPhdApplicants" type="strutsaction.ListAllApplicantsAction"
+			parameter="phd">
+			<forward name="listAllApplicants" path="/WEB-INF/jsp/listAllApplicants.jsp" />
+		</action>
+		
+		<action forward="/index.jsp" path="/getback" />
+		<action forward="/message_add.jsp" path="/messageAdd" />
+		<action forward="/OnlineApplicationLogin.jsp" path="/getback1" />
+		
+		<action attribute="messageForm" input="/message_add.jsp" name="messageForm"
+			path="/messageSave" scope="request" type="strutsaction.MessageSaveAction" />
+
+		<action attribute="idForm" input="/homepage.do" name="idForm"
+			path="/messageUpdate" scope="request" type="strutsaction.MessageUpdateAction">
+			<forward name="messageupdate" path="/message_update.jsp" />
+		</action>
+
+		<action attribute="messageForm" input="/message_update.jsp"
+			name="messageForm" path="/messageSaveUpdate" scope="request"
+			type="strutsaction.MessageSaveUpdateAction" />
+
+		<action attribute="addNoteForm" input="/listNotes.do" name="addNoteForm"
+			path="/addNote" scope="request" type="strutsaction.AddNoteAction">
+			<forward name="login_success" path="/WEB-INF/jsp/login_success.jsp" />
+			<forward name="listNote" path="/WEB-INF/jsp/listNotes.jsp?method=all" />
+		</action>
+
+		<action attribute="addDecisionForm" input="/listDecisions.do" name="addDecisionForm"
+			path="/addDecision" scope="request" type="strutsaction.AddDecisionAction">
+			<forward name="login_success" path="/WEB-INF/jsp/login_success.jsp" />
+			<forward name="listDecision" path="/WEB-INF/jsp/listDecisions.jsp?method=all" />
+		</action>
+
+		<action attribute="idForm" input="/homepage.do" name="idForm"
+			path="/messageDelete" scope="request" type="strutsaction.MessageDeleteAction" />
+
+		<action attribute="idForm" input="/homepage.do" name="idForm"
+			path="/replyDelete" scope="request" type="strutsaction.ReplyDeleteAction" />
+
+		<action attribute="blogForm" name="blogForm" path="/blog"
+			scope="request" type="strutsaction.BlogAction">
+			<forward name="blog" path="/blog.jsp" />
+		</action>
+
+		<action attribute="idForm" input="/blog.do" name="idForm" path="/replyAdd"
+			scope="request" type="strutsaction.ReplyAddAction">
+			<forward name="reply" path="/reply.jsp" />
+		</action>
+
+		<action attribute="replyForm" input="/reply.jsp" name="replyForm"
+			path="/replySave" scope="request" type="strutsaction.ReplySaveAction">
+			<forward name="blog" path="/blog.do" />
+		</action>
+
+		<action path="/displayallusers" name="displayAllUsers"
+			type="strutsaction.DisplayAllUsersAction">
+
+			<forward name="display" path="/userRegistrationList.jsp" />
+		</action>
+
+		<action path="/logout" name="logout" type="strutsaction.LogoutAction">
+
+			<forward name="logout" path="/WEB-INF/jsp/logout.jsp" />
+			<forward name="login" path="/index.jsp" />
+		</action>
+
+		<action path="/resetPassword" type="strutsaction.ResetPasswordAction"
+			name="resetPasswordForm" input="/WEB-INF/jsp/resetPassword.jsp"
+			validate="true" scope="request">
+			<forward name="login" path="index.jsp" />
+			<forward name="index" path="index.jsp" />
+			<forward name="login_success" path="/WEB-INF/jsp/login_success.jsp" />
+
+		</action>
+		<action forward="/WEB-INF/jsp/resetPassword.jsp" input="/WEB-INF/jsp/resetPassword.jsp"
+			path="/reset" />
+
+		
+		
+		
+			<!--  ADDED BY PRIYANGIKA START -->
+		
+
+		<!--  Evaluation of Applicant -->
+		
+		<action path="/CMApplicant" type="strutsaction.CMApplicantListAction"
+			parameter="phdms">
+			<forward name="CMApplicantsList" path="/WEB-INF/jsp/list_applicantsForCommitteeMember.jsp" />
+		</action>
+		
+		
+		<action path="/CMApplicantEval" type="strutsaction.CMApplicantEvaluationAction"
+			parameter="method">
+			<forward name="CMApplicatintEval" path="/WEB-INF/jsp/cm_applicantEvaluation.jsp" />
+		</action>
+
+	    <action name="cmevalAppForm" path="/cmevalApplicant" type="strutsaction.CMApplicantEvaluationActionSubmit"
+	     scope="session" input="/WEB-INF/jsp/cm_applicantEvaluation.jsp" validate="true">
+	        <forward name="CMAEvaluationSuccess" path="/WEB-INF/jsp/cm_appEvalSuccess.jsp" />
+	    </action>
+		
+		<action path="/CMApplicantP" type="strutsaction.CMApplicantListDispAction"
+			parameter="phdms">
+			<forward name="CMApplicantsList" path="/WEB-INF/jsp/list_applicantsForCommitteeMember.jsp" />
+		</action>
+
+		<action path="/mapping/CMApplicant" type="strutsaction.CMApplicantListAction"
+			parameter="all">
+			<forward name="CMApplicantsList" path="/WEB-INF/jsp/list_applicantsForCommitteeMember.jsp" />
+		</action>
+		<action path="/mapping/CMApplicant" type="strutsaction.CMApplicantListAction"
+			parameter="MS">
+			<forward name="CMApplicantsList" path="/WEB-INF/jsp/list_applicantsForCommitteeMember.jsp" />
+		</action>
+		<action path="/mapping/CMApplicant" type="strutsaction.CMApplicantListAction"
+			parameter="PHD">
+			<forward name="CMApplicantsList" path="/WEB-INF/jsp/list_applicantsForCommitteeMember.jsp" />
+		</action>
+		
+		<!--  Completed Applicants -->
+		
+		<action path="/CMRatesC" type="strutsaction.CMCompletedListDispAction"
+			parameter="phdms">
+			<forward name="CMCompletedList" path="/WEB-INF/jsp/list_completedApplicants.jsp" />
+		</action>
+		
+		
+		<action path="/CompletedApplicant" type="strutsaction.CMCompletedListAction"
+			parameter="phdms">
+			<forward name="CMApplicantsList" path="/WEB-INF/jsp/list_completedApplicants.jsp" />
+		</action>
+		
+		<action path="/mapping/CompletedApplicant" type="strutsaction.CMCompletedListAction"
+			parameter="all">
+			<forward name="CMApplicantsList" path="/WEB-INF/jsp/list_completedApplicants.jsp" />
+		</action>
+		<action path="/mapping/CompletedApplicant" type="strutsaction.CMCompletedListAction"
+			parameter="MS">
+			<forward name="CMApplicantsList" path="/WEB-INF/jsp/list_completedApplicants.jsp" />
+		</action>
+		<action path="/mapping/CompletedApplicant" type="strutsaction.CMCompletedListAction"
+			parameter="PHD">
+			<forward name="CMApplicantsList" path="/WEB-INF/jsp/list_completedApplicants.jsp" />
+		</action>
+		
+		<!--  Evaluation Progress -->
+		
+		<action path="/EvalProg" type="strutsaction.EvaluationProgressAction"
+			parameter="phdms">
+			<forward name="EvaluatedList" path="/WEB-INF/jsp/evaluationProgress.jsp" />
+		</action>
+		
+		<action path="/mapping/EvalProg" type="strutsaction.CMCompletedListAction"
+			parameter="all">
+			<forward name="EvaluatedList" path="/WEB-INF/jsp/evaluationProgress.jsp" />
+		</action>
+		<action path="/mapping/EvalProg" type="strutsaction.CMCompletedListAction"
+			parameter="MS">
+			<forward name="EvaluatedList" path="/WEB-INF/jsp/evaluationProgress.jsp" />
+		</action>
+		<action path="/mapping/EvalProg" type="strutsaction.CMCompletedListAction"
+			parameter="PHD">
+			<forward name="EvaluatedList" path="/WEB-INF/jsp/evaluationProgress.jsp" />
+		</action>
+		
+		
+		<!-- Random Assignment -->
+		
+
+		<action path="/RandomAssign" type="strutsaction.CMAppRandomAssignAction" input="/login_success.jsp"
+		parameter="all">
+			<forward name="RandomAssignList" path="/WEB-INF/jsp/setup.jsp" />
+		</action>
+		
+		<!--  ADDED BY PRIYANGIKA END -->
+		
+		
+		
+		
+		
+		
+	</action-mappings>
+	<controller />
+	
+	<message-resources parameter="ApplicationResources" />
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/WEB-INF/validator-rules.xml,/WEB-INF/validator-user.xml" />
+	</plug-in>
+</struts-config>

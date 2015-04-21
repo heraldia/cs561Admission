@@ -1,0 +1,71 @@
+package dao;
+
+import java.util.List;
+import java.util.Iterator;
+
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+
+import model.CommitteeProgress;
+
+public class CommitteeProgressDAO extends HibernateDAO {
+
+	public List getCommitteeProgressMSTotal(){
+		
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		String hql = "select u.username , count(a.degreeSought) "
+				+ 	 "from DutyAssign d "
+				+ 	 "right outer join  d.user u "
+				+ 	 "left outer join d.applicant a with (a.degreeSought = 'MS') "
+				+    "group by u.username "
+				+ 	 "order by u.username asc" ; 
+		return session.createQuery(hql).list();
+	}
+
+	
+	public List getCommitteeProgressPHDTotal(){
+		
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		String hql = "select u.username , count(a.degreeSought) "
+				+ 	 "from DutyAssign d "
+				+ 	 "right outer join  d.user u "
+				+ 	 "left outer join d.applicant a with (a.degreeSought = 'PHD' ) "
+				+    "group by u.username "
+				+ 	 "order by u.username asc" ; 
+		return session.createQuery(hql).list();
+	}
+	
+	public List getCommitteeProgressMSDone(){
+		
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		String hql = "select u.username , count(a.degreeSought) "
+				+ 	 "from DutyAssign d "
+				+ 	 "right outer join  d.user u "
+				+ 	 "left outer join d.applicant a "
+				+	 "where d.done = 'Y' and a.degreeSought = 'MS' "
+				+    "group by u.username "
+				+ 	 "order by u.username asc" ; 
+		return session.createQuery(hql).list();
+	}
+	
+	public List getCommitteeProgressPHDDone(){
+		
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		String hql = "select u.username , count(a.degreeSought) "
+				+ 	 "from DutyAssign d "
+				+ 	 "right outer join  d.user u "
+				+ 	 "left outer join d.applicant a "
+				+	 "where d.done = 'Y' and a.degreeSought = 'PHD' "
+				+    "group by u.username " 
+				+ 	 "order by u.username asc" ; 
+		return session.createQuery(hql).list();
+	}
+	
+	
+	public List  getCommitteeMemberName(){
+		
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		return (session.createQuery("select u.username from User u order by u.username asc")).list();
+		
+	}
+}

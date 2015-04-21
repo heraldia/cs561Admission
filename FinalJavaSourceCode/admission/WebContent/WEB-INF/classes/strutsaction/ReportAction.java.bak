@@ -1,0 +1,56 @@
+package strutsaction;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import model.Applicant;
+
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+
+import dao.ReportDAO;
+
+public class ReportAction extends DispBaseAction {
+	public ActionForward getData( ActionMapping mapping, ActionForm form, 
+			  HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		
+		
+		ReportDAO dao =  new  ReportDAO();
+		
+		long noOfApplicants 					= dao.getNumOfApplicants();
+		List<Applicant> applicantList 			= dao.getAllApplicants();
+		long noOfMinorApplicants 				= dao.getNumOfMinorCitizens();
+		List<Applicant> minorApplicants			= dao.getAllMinorCitizens();
+		long noOfUsCitizenApplicants 			= dao.getNumOfUSCitizen();
+		List<Applicant> applicantUsCitizen		= dao.getAllUSCitizen();
+		long noOfWomenApplicants 			 	= dao.getNumOfWomen();
+		List<Applicant> applicantWomen 			= dao.getAllOfWomen();
+		double avgGreVerbalScore 				= dao.getAvgGreVerbalScore();
+		double avgGreQuantScore					= dao.getAvgGreQuantScore();
+		List rangeEval 							= dao.getRangeEvalScores();
+		
+		
+		request.setAttribute("roundStatistics", "set");
+		request.setAttribute("noOfApplicants", noOfApplicants);
+		request.setAttribute("applicantList", applicantList);
+		request.setAttribute("noOfMinorApplicants", noOfMinorApplicants);
+		request.setAttribute("minorApplicants", minorApplicants);
+		request.setAttribute("noOfUsCitizenApplicants", noOfUsCitizenApplicants);
+		request.setAttribute("applicantUsCitizen", applicantUsCitizen);
+		request.setAttribute("noOfWomenApplicants", noOfWomenApplicants);
+		request.setAttribute("applicantWomen", applicantWomen);
+		request.setAttribute("avgGreVerbalScore", avgGreVerbalScore);
+		request.setAttribute("avgGreQuantScore", avgGreQuantScore);
+		request.setAttribute("rangeEval", rangeEval);
+		
+		
+
+		return mapping.findForward("success");
+		
+			
+	}
+}
